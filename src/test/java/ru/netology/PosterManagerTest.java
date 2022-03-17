@@ -6,11 +6,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PosterManagerTest {
     @Test
-    public void addFilm() {
-        PosterManager manager = new PosterManager();
+    public void shouldPosterManager() {
+        PosterManager manager = new PosterManager(11);
 
-        String newFilm;
-        manager.addFilm();
+        int expected = 11;
+        int actual = manager.getFindLast();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addNewFilm() {
+        PosterManager manager = new PosterManager();
+        manager.addNewFilm("новый фильм");
 
         String[] expected = {
                 "Бладшот",
@@ -22,18 +30,15 @@ public class PosterManagerTest {
                 "Номер один",
                 "новый фильм",
         };
-        String[] actual = manager.findAll();
+        String[] actual = manager.addNewFilm("новый фильм");
 
         assertArrayEquals(expected, actual);
     }
 
 
     @Test
-    public void findLast1() {
-        PosterManager manager = new PosterManager(5);
-        manager.findLast();
-
-
+    public void moreFilmsThanFindLast() {
+        PosterManager manager = new PosterManager();
         String[] expected = {
                 "Номер один",
                 "Тролли.Мировой тур",
@@ -41,17 +46,14 @@ public class PosterManagerTest {
                 "Джентельмены",
                 "Отель Белград"
         };
-        String[] actual = manager.findLast();
+        String[] actual = manager.findLast(5);
 
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void findLast2() {
+    public void findLastDefaultQuantity() {
         PosterManager manager = new PosterManager();
-        manager.findLast();
-
-
         String[] expected = {
                 "Номер один",
                 "Тролли.Мировой тур",
@@ -61,7 +63,26 @@ public class PosterManagerTest {
                 "Вперед",
                 "Бладшот"
         };
-        String[] actual = manager.findLast();
+        String[] actual = manager.findLast(10);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findAll() {
+        PosterManager manager = new PosterManager();
+        manager.findAll();
+
+        String[] expected = {
+                "Бладшот",
+                "Вперед",
+                "Отель Белград",
+                "Джентельмены",
+                "Человек-невидимка",
+                "Тролли.Мировой тур",
+                "Номер один"
+        };
+        String[] actual = manager.findAll();
 
         assertArrayEquals(expected, actual);
     }

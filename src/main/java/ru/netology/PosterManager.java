@@ -1,51 +1,72 @@
 package ru.netology;
 
 public class PosterManager {
-    String newFilm = "новый фильм";
-    int findLast = 10;
-    String[] films = {
-            "Бладшот",
-            "Вперед",
-            "Отель Белград",
-            "Джентельмены",
-            "Человек-невидимка",
-            "Тролли.Мировой тур",
-            "Номер один"
-    };
+    private int findLast = 10;
 
-    public void addFilm() {
-        String[] tmp = new String[films.length + 1];
-        for (int i = 0; i < films.length; i++) {
-            tmp[i] = films[i];
-        }
-        tmp[tmp.length - 1] = newFilm;
-        films = tmp;
+    public int getFindLast() {
+        return findLast;
     }
 
-    public String[] findLast() {
-        int resultLength;
-        if (films.length > findLast) {
-            resultLength = findLast;
-        } else {
-            resultLength = films.length;
-        }
-        String[] result = new String[resultLength];
-        for (int i = 0; i < result.length; i++) {
-            int index = films.length - i - 1;
-            result[i] = films[index];
-        }
-        return result;
-    }
-
-    public String[] findAll() {
-        return films;
+    public PosterManager() {
     }
 
     public PosterManager(int findLast) {
         this.findLast = findLast;
     }
 
-    public PosterManager() {
+    public String[] addNewFilm(String newFilm) {
+        String[] Films = {
+                "Бладшот",
+                "Вперед",
+                "Отель Белград",
+                "Джентельмены",
+                "Человек-невидимка",
+                "Тролли.Мировой тур",
+                "Номер один"
+
+        };
+        String[] tmp = new String[Films.length + 1];
+        System.arraycopy(Films, 0, tmp, 0, Films.length);
+        tmp[tmp.length - 1] = newFilm;
+        Films = tmp;
+        return Films;
+    }
+
+    public String[] findAll() {
+        String[] Films = {
+                "Бладшот",
+                "Вперед",
+                "Отель Белград",
+                "Джентельмены",
+                "Человек-невидимка",
+                "Тролли.Мировой тур",
+                "Номер один"
+        };
+        return Films;
+    }
+
+    public String[] findLast(int findLast) {
+        String[] Films = {
+                "Бладшот",
+                "Вперед",
+                "Отель Белград",
+                "Джентельмены",
+                "Человек-невидимка",
+                "Тролли.Мировой тур",
+                "Номер один"
+        };
+        int resultLength;
+        if (Films.length > findLast) {
+            resultLength = findLast;
+        } else {
+            resultLength = Films.length;
+        }
+        String[] result = new String[resultLength];
+        for (int i = 0; i < result.length; i++) {
+            int index = Films.length - i - 1;
+            result[i] = Films[index];
+        }
+        return result;
     }
 }
 
