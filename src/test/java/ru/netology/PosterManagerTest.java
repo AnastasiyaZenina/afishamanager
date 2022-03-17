@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PosterManagerTest {
-
-
+public class PosterManagerTest {
     @Test
     public void addFilm() {
         PosterManager manager = new PosterManager();
