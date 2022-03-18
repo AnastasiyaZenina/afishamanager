@@ -2,9 +2,7 @@ package ru.netology;
 
 public class PosterManager {
     private int findLast = 10;
-    private String[] Films = {"Film1", "Film2", "Film3",
-            "Film4", "Film5", "Film6", "Film7"
-    };
+    private String[] films = new String[0];
 
     public PosterManager() {
     }
@@ -13,34 +11,39 @@ public class PosterManager {
         this.findLast = findLast;
     }
 
+    public void setFilms(String[] films) {
+        this.films = films;
+    }
+
     public int getFindLast() {
         return findLast;
     }
 
     public void addNewFilm(String newFilm) {
-        String[] tmp = new String[Films.length + 1];
-        System.arraycopy(Films, 0, tmp, 0, Films.length);
+        String[] tmp = new String[films.length + 1];
+        System.arraycopy(films, 0, tmp, 0, films.length);
         tmp[tmp.length - 1] = newFilm;
-        Films = tmp;
+        films = tmp;
     }
 
     public String[] findAll() {
-        return Films;
+        return films;
     }
 
     public String[] findLast() {
         int resultLength;
-        if (Films.length > findLast) {
+        if (films.length > findLast) {
             resultLength = findLast;
         } else {
-            resultLength = Films.length;
+            resultLength = films.length;
         }
         String[] result = new String[resultLength];
         for (int i = 0; i < result.length; i++) {
-            int index = Films.length - i - 1;
-            result[i] = Films[index];
+            int index = films.length - i - 1;
+            result[i] = films[index];
         }
         return result;
     }
+
 }
 

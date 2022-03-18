@@ -18,18 +18,10 @@ public class PosterManagerTest {
     @Test
     public void addNewFilm() {
         PosterManager manager = new PosterManager();
-        manager.addNewFilm("новый фильм");
+        manager.setFilms(new String[]{"Film1", "Film2", "Film3", "Film4"});
+        manager.addNewFilm("Film5");
 
-        String[] expected = {
-                "Film1",
-                "Film2",
-                "Film3",
-                "Film4",
-                "Film5",
-                "Film6",
-                "Film7",
-                "новый фильм",
-        };
+        String[] expected = {"Film1", "Film2", "Film3", "Film4", "Film5"};
         String[] actual = manager.findAll();
 
         assertArrayEquals(expected, actual);
@@ -39,13 +31,9 @@ public class PosterManagerTest {
     @Test
     public void moreFilmsThanFindLast() {
         PosterManager manager = new PosterManager(5);
-        String[] expected = {
-                "Film7",
-                "Film6",
-                "Film5",
-                "Film4",
-                "Film3"
-        };
+        manager.setFilms(new String[]{"Film1", "Film2", "Film3", "Film4", "Film5", "Film6", "Film7"});
+
+        String[] expected = {"Film7", "Film6", "Film5", "Film4", "Film3"};
         String[] actual = manager.findLast();
 
         assertArrayEquals(expected, actual);
@@ -54,15 +42,9 @@ public class PosterManagerTest {
     @Test
     public void findLastDefaultQuantity() {
         PosterManager manager = new PosterManager();
-        String[] expected = {
-                "Film7",
-                "Film6",
-                "Film5",
-                "Film4",
-                "Film3",
-                "Film2",
-                "Film1"
-        };
+        manager.setFilms(new String[]{"Film1", "Film2", "Film3", "Film4", "Film5", "Film6", "Film7"});
+
+        String[] expected = {"Film7", "Film6", "Film5", "Film4", "Film3", "Film2", "Film1"};
         String[] actual = manager.findLast();
 
         assertArrayEquals(expected, actual);
@@ -71,17 +53,9 @@ public class PosterManagerTest {
     @Test
     public void findAll() {
         PosterManager manager = new PosterManager();
-        manager.findAll();
+        manager.setFilms(new String[]{"Film1", "Film2", "Film3", "Film4", "Film5", "Film6", "Film7"});
 
-        String[] expected = {
-                "Film1",
-                "Film2",
-                "Film3",
-                "Film4",
-                "Film5",
-                "Film6",
-                "Film7",
-        };
+        String[] expected = {"Film1", "Film2", "Film3", "Film4", "Film5", "Film6", "Film7",};
         String[] actual = manager.findAll();
 
         assertArrayEquals(expected, actual);
