@@ -21,16 +21,16 @@ public class PosterManagerTest {
         manager.addNewFilm("новый фильм");
 
         String[] expected = {
-                "Бладшот",
-                "Вперед",
-                "Отель Белград",
-                "Джентельмены",
-                "Человек-невидимка",
-                "Тролли.Мировой тур",
-                "Номер один",
+                "Film1",
+                "Film2",
+                "Film3",
+                "Film4",
+                "Film5",
+                "Film6",
+                "Film7",
                 "новый фильм",
         };
-        String[] actual = manager.addNewFilm("новый фильм");
+        String[] actual = manager.findAll();
 
         assertArrayEquals(expected, actual);
     }
@@ -38,15 +38,15 @@ public class PosterManagerTest {
 
     @Test
     public void moreFilmsThanFindLast() {
-        PosterManager manager = new PosterManager();
+        PosterManager manager = new PosterManager(5);
         String[] expected = {
-                "Номер один",
-                "Тролли.Мировой тур",
-                "Человек-невидимка",
-                "Джентельмены",
-                "Отель Белград"
+                "Film7",
+                "Film6",
+                "Film5",
+                "Film4",
+                "Film3"
         };
-        String[] actual = manager.findLast(5);
+        String[] actual = manager.findLast();
 
         assertArrayEquals(expected, actual);
     }
@@ -55,15 +55,15 @@ public class PosterManagerTest {
     public void findLastDefaultQuantity() {
         PosterManager manager = new PosterManager();
         String[] expected = {
-                "Номер один",
-                "Тролли.Мировой тур",
-                "Человек-невидимка",
-                "Джентельмены",
-                "Отель Белград",
-                "Вперед",
-                "Бладшот"
+                "Film7",
+                "Film6",
+                "Film5",
+                "Film4",
+                "Film3",
+                "Film2",
+                "Film1"
         };
-        String[] actual = manager.findLast(10);
+        String[] actual = manager.findLast();
 
         assertArrayEquals(expected, actual);
     }
@@ -74,13 +74,13 @@ public class PosterManagerTest {
         manager.findAll();
 
         String[] expected = {
-                "Бладшот",
-                "Вперед",
-                "Отель Белград",
-                "Джентельмены",
-                "Человек-невидимка",
-                "Тролли.Мировой тур",
-                "Номер один"
+                "Film1",
+                "Film2",
+                "Film3",
+                "Film4",
+                "Film5",
+                "Film6",
+                "Film7",
         };
         String[] actual = manager.findAll();
 
